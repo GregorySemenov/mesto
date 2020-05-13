@@ -1,10 +1,14 @@
 .profile__info {
   width: 100%;
+  display: grid;
+  grid-template-columns: minmax(0px, min-content) minmax(0px, min-content);
+  align-items: center;
 }
 
 @media (max-width: 1050px) {
   .profile__info {
     text-align: center;
     margin-top: 28px;
+    width: auto;
   }
 }

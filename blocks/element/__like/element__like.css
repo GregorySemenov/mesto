@@ -2,10 +2,16 @@
   width: 21px;
   height: 18px;
   background-image: url('../../../images/like.svg');
-  background-repeat: no-repeat;
   flex-shrink: 0;
   margin-left: 12px;
   transition: 0.2s;
+  background-repeat: no-repeat;
+  background-position: center;
+  border: none;
+  background-color: transparent;
+  outline: none;
+  display: block;
+  background-size: contain;
 }
 
 .element__like:hover {

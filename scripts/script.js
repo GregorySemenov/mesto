@@ -1,32 +1,37 @@
-let popup = document.querySelector('.popup')
-let profile = document.querySelector('.profile')
+//Создаем объекты поп-ап и профиля
+const popup = document.querySelector('.popup')
+const profile = document.querySelector('.profile')
 
-let popupForm = document.querySelector('.popup__form')
-let popupCloseButton = document.querySelector('.popup__close')
-let popupInputName = popupForm.querySelector('.popup__input_name')
-let popupInputDescription = popupForm.querySelector('.popup__input_description')
+//Создаем элементы для всплывающего окна
+const popupForm = document.querySelector('.popup__form')
+const popupCloseButton = document.querySelector('.popup__close')
+const popupInputName = popupForm.querySelector('.popup__input_name')
+const popupInputDescription = popupForm.querySelector('.popup__input_description')
 
-let profileEditButton = document.querySelector('.profile__edit-button')
-let profileName = document.querySelector('.profile__name')
-let profileDescription = document.querySelector('.profile__description')
+//Создаем элементы для окна с профилем
+const profileEditButton = document.querySelector('.profile__edit-button')
+const profileName = document.querySelector('.profile__name')
+const profileDescription = document.querySelector('.profile__description')
 
-function openPopup() {
-  popupInputName.value = profileName.textContent
-  popupInputDescription.value = profileDescription.textContent
-  popup.classList.add('popup_open')
+//Функция открытия и закрытия окна поп-ап
+//Если при проверке создано окно, то заносим данные
+function openClosePopup() {
+  popup.classList.toggle('popup_open');
+  if (popup.classList.contains('popup_open')) {
+    popupInputName.value = profileName.textContent;
+    popupInputDescription.value = profileDescription.textContent;
+  }
 }
 
-function closePopup() {
-  popup.classList.remove('popup_open')
-}
-
+//Фукнция применения изменений для профиля
 function applyСhanges(event) {
   event.preventDefault()
   profileName.textContent = popupInputName.value
   profileDescription.textContent = popupInputDescription.value
-  closePopup()
+  openClosePopup()
 }
 
-profileEditButton.addEventListener('click', openPopup)
-popupCloseButton.addEventListener('click', closePopup)
+//Отслеживаем события на кнопки
+profileEditButton.addEventListener('click', openClosePopup)
+popupCloseButton.addEventListener('click', openClosePopup)
 popupForm.addEventListener('submit', applyСhanges)

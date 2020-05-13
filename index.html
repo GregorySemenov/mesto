@@ -15,68 +15,71 @@
       <div class="header__logo"></div>
     </header>
 
-    <section class="profile">
-      <img src="./images/avatar.jpg" alt="Аватар Жак-Ив Кусто" class="profile__avatar" />
-      <div class="profile__info">
-        <h1 class="profile__name">Жак-Ив Кусто</h1>
-        <button class="profile__edit-button"></button>
-        <p class="profile__description">Исследователь океана</p>
-      </div>
-      <button class="profile__add-button"></button>
-    </section>
+    <main class="content">
 
-    <section class="elements">
-
-      <div class="element">
-        <img src="./images/khibiny.jpg" alt="Горы Хибины" class="element__photo">
-        <div class="element__card">
-          <h2 class="element__name">Хибины</h2>
-          <div class="element__like"></div>
+      <section class="profile">
+        <img src="./images/avatar.jpg" alt="Аватар Жак-Ив Кусто" class="profile__avatar" />
+        <div class="profile__info">
+          <h1 class="profile__name">Жак-Ив Кусто</h1>
+          <button class="profile__edit-button" type="button"></button>
+          <p class="profile__description">Исследователь океана</p>
         </div>
-      </div>
+        <button class="profile__add-button" type="button"></button>
+      </section>
 
-      <div class="element">
-        <img src="./images/nossetia.jpg" alt="Северная Осетия" class="element__photo">
-        <div class="element__card">
-          <h2 class="element__name">Северная Осетия</h2>
-          <div class="element__like"></div>
+      <section class="elements">
+
+        <div class="element">
+          <img src="./images/khibiny.jpg" alt="Горы Хибины" class="element__photo">
+          <div class="element__card">
+            <h2 class="element__name">Хибины</h2>
+            <button class="element__like" type="button"></button>
+          </div>
         </div>
-      </div>
 
-      <div class="element">
-        <img src="./images/elbrus.jpg" alt="Эльбрус" class="element__photo">
-        <div class="element__card">
-          <h2 class="element__name">Эльбрус</h2>
-          <div class="element__like"></div>
+        <div class="element">
+          <img src="./images/nossetia.jpg" alt="Северная Осетия" class="element__photo">
+          <div class="element__card">
+            <h2 class="element__name">Северная Осетия</h2>
+            <button class="element__like" type="button"></button>
+          </div>
         </div>
-      </div>
 
-      <div class="element">
-        <img src="./images/ural.jpg" alt="Урал" class="element__photo">
-        <div class="element__card">
-          <h2 class="element__name">Урал</h2>
-          <div class="element__like"></div>
+        <div class="element">
+          <img src="./images/elbrus.jpg" alt="Эльбрус" class="element__photo">
+          <div class="element__card">
+            <h2 class="element__name">Эльбрус</h2>
+            <button class="element__like" type="button"></button>
+          </div>
         </div>
-      </div>
 
-      <div class="element">
-        <img src="./images/dagestan.jpg" alt="Дагестан" class="element__photo">
-        <div class="element__card">
-          <h2 class="element__name">Дагестан</h2>
-          <div class="element__like"></div>
+        <div class="element">
+          <img src="./images/ural.jpg" alt="Урал" class="element__photo">
+          <div class="element__card">
+            <h2 class="element__name">Урал</h2>
+            <button class="element__like" type="button"></button>
+          </div>
         </div>
-      </div>
 
-      <div class="element">
-        <img src="./images/perm.jpg" alt="Пермь" class="element__photo">
-        <div class="element__card">
-          <h2 class="element__name">Пермь</h2>
-          <div class="element__like"></div>
+        <div class="element">
+          <img src="./images/dagestan.jpg" alt="Дагестан" class="element__photo">
+          <div class="element__card">
+            <h2 class="element__name">Дагестан</h2>
+            <button class="element__like" type="button"></button>
+          </div>
         </div>
-      </div>
 
-    </section>
+        <div class="element">
+          <img src="./images/perm.jpg" alt="Пермь" class="element__photo">
+          <div class="element__card">
+            <h2 class="element__name">Пермь</h2>
+            <button class="element__like" type="button"></button>
+          </div>
+        </div>
 
+      </section>
+
+    </main>
 
     <footer class="footer">
       <p class="footer__copyright">&copy; 2020 Mesto Russia</p>
@@ -84,15 +87,15 @@
 
     <div class="popup">
       <div class="popup__container">
-        <button class="popup__close"></button>
+        <button class="popup__close" type="button"></button>
 
         <h3 class="popup__title">Редактировать профиль</h3>
 
-        <form action="#" class="popup__form">
-          <input name="popupInputName" type="text" class="popup__input popup__input_name" placeholder="Имя" required>
-          <input name="popupInputDescription" type="text" class="popup__input popup__input_description"
+        <form action="#" class="popup__form" name="popupForm" method="POST">
+          <input name="popup-Input-Name" type="text" class="popup__input popup__input_name" placeholder="Имя" required>
+          <input name="popup-Input-Description" type="text" class="popup__input popup__input_description"
             placeholder="Деятельность" required>
-          <button class="popup__save">Сохранить</button>
+          <button class="popup__save" type="submit">Сохранить</button>
         </form>
       </div>
     </div>

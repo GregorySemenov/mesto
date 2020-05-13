@@ -5,7 +5,8 @@
   font-size: 14px;
   line-height: 1.22;
   border: none;
-  border-bottom: 1px solid grey;
+  border-bottom: 1px solid #CCC;
   color: #000000;
   padding: 13px 0;
+  margin-top: 16px;
 }

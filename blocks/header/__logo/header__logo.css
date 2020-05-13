@@ -5,6 +5,8 @@
   background-size: contain;
   background-position: left;
   background-repeat: no-repeat;
+  object-position: left;
+  object-fit: contain;
 }
 
 @media (max-width: 425px) {

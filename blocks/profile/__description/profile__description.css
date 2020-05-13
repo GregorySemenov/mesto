@@ -6,11 +6,13 @@
   color: #FFF;
   margin-top: 16px;
   word-wrap: break-word;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  max-width: 500px;
 }
 
 @media (max-width: 768px) {
   .profile__description {
     font-size: 14px;
-    word-wrap: break-word;
   }
 }
