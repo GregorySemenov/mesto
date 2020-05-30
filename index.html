@@ -27,57 +27,7 @@
         <button class="profile__add-button" type="button"></button>
       </section>
 
-      <section class="elements">
-
-        <div class="element">
-          <img src="./images/khibiny.jpg" alt="Горы Хибины" class="element__photo">
-          <div class="element__card">
-            <h2 class="element__name">Хибины</h2>
-            <button class="element__like" type="button"></button>
-          </div>
-        </div>
-
-        <div class="element">
-          <img src="./images/nossetia.jpg" alt="Северная Осетия" class="element__photo">
-          <div class="element__card">
-            <h2 class="element__name">Северная Осетия</h2>
-            <button class="element__like" type="button"></button>
-          </div>
-        </div>
-
-        <div class="element">
-          <img src="./images/elbrus.jpg" alt="Эльбрус" class="element__photo">
-          <div class="element__card">
-            <h2 class="element__name">Эльбрус</h2>
-            <button class="element__like" type="button"></button>
-          </div>
-        </div>
-
-        <div class="element">
-          <img src="./images/ural.jpg" alt="Урал" class="element__photo">
-          <div class="element__card">
-            <h2 class="element__name">Урал</h2>
-            <button class="element__like" type="button"></button>
-          </div>
-        </div>
-
-        <div class="element">
-          <img src="./images/dagestan.jpg" alt="Дагестан" class="element__photo">
-          <div class="element__card">
-            <h2 class="element__name">Дагестан</h2>
-            <button class="element__like" type="button"></button>
-          </div>
-        </div>
-
-        <div class="element">
-          <img src="./images/perm.jpg" alt="Пермь" class="element__photo">
-          <div class="element__card">
-            <h2 class="element__name">Пермь</h2>
-            <button class="element__like" type="button"></button>
-          </div>
-        </div>
-
-      </section>
+      <section class="elements"></section>
 
     </main>
 
@@ -85,22 +35,59 @@
       <p class="footer__copyright">&copy; 2020 Mesto Russia</p>
     </footer>
 
-    <div class="popup">
+    <div class="popup popup_profile">
       <div class="popup__container">
         <button class="popup__close" type="button"></button>
 
         <h3 class="popup__title">Редактировать профиль</h3>
 
         <form action="#" class="popup__form" name="popupForm" method="POST">
-          <input name="popup-Input-Name" type="text" class="popup__input popup__input_name" placeholder="Имя" required>
-          <input name="popup-Input-Description" type="text" class="popup__input popup__input_description"
+          <input name="popup-Input-Name" type="text" class="popup__input popup__input_profile-name" placeholder="Имя" required>
+          <input name="popup-Input-Description" type="text" class="popup__input popup__input_profile-description"
             placeholder="Деятельность" required>
           <button class="popup__save" type="submit">Сохранить</button>
         </form>
       </div>
     </div>
 
+    <div class="popup popup_place">
+      <div class="popup__container">
+        <button class="popup__close" type="button"></button>
+
+        <h3 class="popup__title">Новое место</h3>
+
+        <form action="#" class="popup__form" name="popupPlaceForm" method="POST">
+          <input name="popup-Input-Place-Name" type="text" class="popup__input popup__input_place-name" placeholder="Название" required>
+          <input name="popup-Input-Place-Photo" type="text" class="popup__input popup__input_place-photo"
+            placeholder="Ссылка на картинку" required>
+          <button class="popup__save" type="submit">Создать</button>
+        </form>
+      </div>
+    </div>
+
+    <div class="popup popup_opacity popup_image">
+      <div class="popup__image-container">
+        <button type="button" class="popup__close"></button>
+        <img class="popup__image-photo">
+        <p class="popup__image-name"></p>
+      </div>
+    </div>
+
+
+
   </div>
+
+  <template id="element">
+    <div class="element">
+      <div class="element__photo" data-name="name" data-link="link"></div>
+      <div class="element__card">
+        <h2 class="element__name"></h2>
+        <button class="element__like" type="button"></button>
+        <button class="element__delete" type="submit"></button>
+      </div>
+    </div>
+  </template>
+
   <script src="./scripts/script.js"></script>
 </body>
 

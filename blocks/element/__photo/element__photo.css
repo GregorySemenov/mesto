@@ -1,5 +1,13 @@
 .element__photo {
   width: 100%;
-  display: block;
   border-radius: 10px 10px 0 0;
+  background-color: rgb(255, 255, 255);
+  background-size: cover;
+  padding-bottom: 100%;
+  cursor: pointer;
+  transition: opacity 0.25s;
+}
+
+.element__photo:hover {
+  opacity: .8;
 }
