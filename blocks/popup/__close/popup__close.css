@@ -1,7 +1,10 @@
 .popup__close {
   position: absolute;
   background-image: url('../../../images/cross.svg');
-  background-color: transparent;
+  /* background-color: transparent; */
+  background-color: rgba(0, 0, 0, 0);
+  background-repeat: no-repeat;
+  background-position: center;
   background-size: contain;
   width: 60px;
   height: 60px;
