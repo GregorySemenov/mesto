@@ -59,24 +59,23 @@ function createPlaceCard({ name, link }) {
   const placeCard = templatePlaceCard.cloneNode(true)
   const placeName = placeCard.querySelector('.element__name')
   const placeImage = placeCard.querySelector('.element__photo')
+  const placeLike = placeCard.querySelector('.element__like')
+  const placeDelete = placeCard.querySelector('.element__delete')
   placeImage.style.backgroundImage = (`url('${link}')`)
   placeName.textContent = name
-  placeImage.dataset.name = name
-  placeImage.dataset.link = link
+
+  placeImage.addEventListener('click', function() {
+	  imagePhoto.src = link
+	  imageName.textContent = name
+	  showPopup(popupImage)
+  });
+  placeLike.addEventListener('click', function(evt) {
+	  evt.target.classList.toggle('element__like_active')
+  });
+  placeDelete.addEventListener('click', function(evt) {
+	  evt.target.closest('.element').remove()
+  });
   return placeCard
-};
-
-// Функция добавление карточки
-function addPlaceCardInElements({ name, link }) {
-  const card = createPlaceCard({ name, link })
-  places.append(card)
-};
-
-// Функция вывода карточек на экран
-function render() {
-  initialPlaces.forEach(evt => {
-    addPlaceCardInElements(evt)
-  })
 };
 
 // Функция: Показать попап
@@ -85,10 +84,11 @@ function showPopup(evt) {
 };
 
 // Функция закрытия попапа
-function closePopup (evt) {
-  if (evt.target.closest('.popup__close')){
-    evt.target.closest('.popup').classList.toggle('popup_open');
+function closePopup(evt) {
+  if (evt.target) {
+    evt = evt.target.closest('.popup_open')
   }
+  evt.classList.remove('popup_open')
 };
 
 // Заносим в форму профиля данные
@@ -126,45 +126,15 @@ function addPlaceCard(evt) {
   closePopup(popupPlace)
 };
 
-// Отображаем фото
-function openPhoto(evt) {
-  const { name, link } = evt.target.dataset;
-  imagePhoto.src = link
-  imageName.textContent = name
-  showPopup(popupImage)
-};
-
-// Ставим или убираем лайк
-function toggleLike(evt) {
-  evt.target.classList.toggle('element__like_active')
-};
-
-// Удаляем место с карточкой
-function deletePlace(evt) {
-  evt.target.closest('.element').remove()
-};
-
-// Отслеживаем клики карточек
-function listenPlaceСard(evt) {
-  if (evt.target.classList.contains('element__photo')) {
-   openPhoto(evt)
-  };
-  if (evt.target.classList.contains('element__like')) {
-   toggleLike(evt)
-  };
-  if (evt.target.classList.contains('element__delete')){
-    deletePlace(evt)
-  };
-};
-
 // Отслеживаем события
 userProfileEditButton.addEventListener('click', showPopupProfile);
 userProfileAddButton.addEventListener('click', showPopupPlace);
 formProfile.addEventListener('submit', applyСhangesProfile);
 formPlace.addEventListener('submit', addPlaceCard);
-places.addEventListener('click', listenPlaceСard);
 popupButtonClose.forEach(evt => evt.addEventListener('click', closePopup));
 
-
 //Вызов функции вывода карточек на экран
-render();
+initialPlaces.forEach(evt => {
+	const card = createPlaceCard(evt)
+	places.append(card)
+})
