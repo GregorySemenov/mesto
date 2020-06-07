@@ -54,6 +54,11 @@ const templatePlaceCard = document.querySelector('#element').content;
 
 const places = document.querySelector('.elements');
 
+// Функция: Показать попап
+function showPopup(evt) {
+  evt.classList.add('popup_open')
+};
+
 // Формируем карточки
 function createPlaceCard({ name, link }) {
   const placeCard = templatePlaceCard.cloneNode(true)
@@ -64,23 +69,21 @@ function createPlaceCard({ name, link }) {
   placeImage.style.backgroundImage = (`url('${link}')`)
   placeName.textContent = name
 
-  placeImage.addEventListener('click', function() {
+  placeImage.addEventListener('click', () => {
 	  imagePhoto.src = link
 	  imageName.textContent = name
 	  showPopup(popupImage)
   });
-  placeLike.addEventListener('click', function(evt) {
+
+  placeLike.addEventListener('click', (evt) => {
 	  evt.target.classList.toggle('element__like_active')
   });
-  placeDelete.addEventListener('click', function(evt) {
+
+  placeDelete.addEventListener('click', (evt) => {
 	  evt.target.closest('.element').remove()
   });
-  return placeCard
-};
 
-// Функция: Показать попап
-function showPopup(evt) {
-  evt.classList.add('popup_open')
+  return placeCard
 };
 
 // Функция закрытия попапа

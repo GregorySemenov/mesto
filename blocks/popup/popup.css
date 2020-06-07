@@ -1,14 +1,9 @@
 @import url('./__container/popup__container.css');
 @import url('./__close/popup__close.css');
 @import url('./__title/popup__title.css');
-@import url('./__form/popup__form.css');
 @import url('./__input/popup__input.css');
-@import url('./__input/_profile-name/popup__input_profile-name.css');
-@import url('./__input/_profile-description/popup__input_profile-description.css');
-@import url('./__input/_place-name/popup__input_place-name.css');
-@import url('./__input/_place-photo/popup__input_place-photo.css');
 @import url('./__save/popup__save.css');
-@import url('./__image-container/__image-container.css');
+@import url('./__image-container/popup__image-container.css');
 @import url('./__image-name/popup__image-name.css');
 @import url('./__image-photo/popup__image-photo.css');
 .popup {
