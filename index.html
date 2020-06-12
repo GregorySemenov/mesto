@@ -41,10 +41,16 @@
 
         <h3 class="popup__title">Редактировать профиль</h3>
 
-        <form action="#" class="popup__form" name="popupForm" method="POST">
-          <input name="popup-Input-Name" type="text" class="popup__input popup__input_profile-name" placeholder="Имя" required>
-          <input name="popup-Input-Description" type="text" class="popup__input popup__input_profile-description"
-            placeholder="Деятельность" required>
+        <form action="#" class="popup__form" name="popupForm" method="POST" novalidate>
+          <input id="profile-name" name="popup-Input-Name" type="text" class="popup__input popup__input_profile-name" placeholder="Имя" required minlength="2"
+          maxlength="40">
+          <span id="profile-name-error" class="popup__error"></span>
+
+          <input id="profile-description" name="popup-Input-Description" type="text" class="popup__input popup__input_profile-description"
+            placeholder="Деятельность" required minlength="2"
+            maxlength="200">
+          <span id="profile-description-error" class="popup__error"></span>
+
           <button class="popup__save" type="submit">Сохранить</button>
         </form>
       </div>
@@ -56,10 +62,15 @@
 
         <h3 class="popup__title">Новое место</h3>
 
-        <form action="#" class="popup__form" name="popupPlaceForm" method="POST">
-          <input name="popup-Input-Place-Name" type="text" class="popup__input popup__input_place-name" placeholder="Название" required>
-          <input name="popup-Input-Place-Photo" type="text" class="popup__input popup__input_place-photo"
+        <form action="#" class="popup__form" name="popupPlaceForm" method="POST" novalidate>
+          <input id="place-name" name="popup-Input-Place-Name" type="text" class="popup__input popup__input_place-name" placeholder="Название" required minlength="1"
+          maxlength="30">
+          <span id="place-name-error" class="popup__error"></span>
+
+          <input id="place-photo" name="popup-Input-Place-Photo" type="url" class="popup__input popup__input_place-photo"
             placeholder="Ссылка на картинку" required>
+          <span id="place-photo-error" class="popup__error"></span>
+
           <button class="popup__save" type="submit">Создать</button>
         </form>
       </div>
@@ -89,6 +100,7 @@
   </template>
 
   <script src="./scripts/script.js"></script>
+  <script src="./scripts/validate.js"></script>
 </body>
 
 </html>
