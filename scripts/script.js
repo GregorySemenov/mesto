@@ -54,9 +54,33 @@ const templatePlaceCard = document.querySelector('#element').content;
 
 const places = document.querySelector('.elements');
 
+// Запуск события на элементе формы
+const ShowForm = new Event('showForm', { bubbles: false })
+
+// Закрывать попап по клавише Esc
+function closePopupEsc (evt) {
+  if (evt.key === 'Escape') {
+    const openPopup = document.querySelector('.popup_open')
+    closePopup(openPopup)
+  }
+}
+
+// Закрыть попап по клику на оверлее
+function closePopupOverlay (evt) {
+  if (evt.target.classList.contains('popup')) {
+    closePopup(evt.target)
+  }
+}
+
 // Функция: Показать попап
 function showPopup(evt) {
+  document.addEventListener('keydown', closePopupEsc)
+  evt.addEventListener('mousedown', closePopupOverlay)
   evt.classList.add('popup_open')
+
+  if (evt.querySelector('.popup__form')) {
+    evt.querySelector('.popup__form').dispatchEvent(ShowForm)
+  }
 };
 
 // Формируем карточки
