@@ -55,12 +55,12 @@ const templatePlaceCard = document.querySelector('#element').content;
 const places = document.querySelector('.elements');
 
 // Запуск события на элементе формы
-const ShowForm = new Event('showForm', { bubbles: false })
+const ShowForm = new Event('showForm', { bubbles: false });
 
 // Закрывать попап по клавише Esc
 function closePopupEsc (evt) {
   if (evt.key === 'Escape') {
-    const openPopup = document.querySelector('.popup_open')
+    const openPopup = document.querySelector('.popup_open');
     closePopup(openPopup)
   }
 }
@@ -73,15 +73,14 @@ function closePopupOverlay (evt) {
 }
 
 // Функция: Показать попап
-function showPopup(evt) {
+function showPopup(popup) {
   document.addEventListener('keydown', closePopupEsc)
-  evt.addEventListener('mousedown', closePopupOverlay)
-  evt.classList.add('popup_open')
-
-  if (evt.querySelector('.popup__form')) {
-    evt.querySelector('.popup__form').dispatchEvent(ShowForm)
+  popup.addEventListener('mousedown', closePopupOverlay)
+  popup.classList.add('popup_open')
+  if (popup.querySelector('.popup__form')) {
+    popup.querySelector('.popup__form').dispatchEvent(ShowForm)
   }
-};
+}
 
 // Формируем карточки
 function createPlaceCard({ name, link }) {
@@ -94,7 +93,8 @@ function createPlaceCard({ name, link }) {
   placeName.textContent = name
 
   placeImage.addEventListener('click', () => {
-	  imagePhoto.src = link
+    imagePhoto.src = link
+    imagePhoto.alt = `Изображение с местом ${name}`
 	  imageName.textContent = name
 	  showPopup(popupImage)
   });
@@ -108,22 +108,26 @@ function createPlaceCard({ name, link }) {
   });
 
   return placeCard
-};
+}
 
 // Функция закрытия попапа
-function closePopup(evt) {
-  if (evt.target) {
-    evt = evt.target.closest('.popup_open')
+function closePopup (popup) {
+  if (popup.target) {
+   popup = popup.target.closest('.popup')
   }
-  evt.classList.remove('popup_open')
-};
+//удаляем обработчики при закрытии
+  if (!popup.classList.contains('popup_open')) return
+   popup.classList.remove('popup_open')
+   popup.removeEventListener('mousedown', closePopupOverlay)
+   document.removeEventListener('keydown', closePopupEsc)
+}
 
 // Заносим в форму профиля данные
 function showPopupProfile() {
   formInputProfileName.value = userProfileName.textContent
   formInputProfileDescription.value = userProfileDescription.textContent
   showPopup(popupProfile)
-};
+}
 
 // Заносим в форму места данные
 function showPopupPlace() {
@@ -131,15 +135,15 @@ function showPopupPlace() {
   formInputPlaceName.value = ''
   formInputPlacePhoto.value = ''
   showPopup(popupPlace)
-};
+}
 
 // Записываем изменения в профиль
-function applyСhangesProfile(evt) {
+function applyChangesProfile(evt) {
   evt.preventDefault()
   userProfileName.textContent = formInputProfileName.value
   userProfileDescription.textContent = formInputProfileDescription.value
   closePopup(popupProfile)
-};
+}
 
 // Создаем новую карточку
 function addPlaceCard(evt) {
@@ -151,12 +155,12 @@ function addPlaceCard(evt) {
   const card = createPlaceCard(place)
   places.prepend(card)
   closePopup(popupPlace)
-};
+}
 
 // Отслеживаем события
 userProfileEditButton.addEventListener('click', showPopupProfile);
 userProfileAddButton.addEventListener('click', showPopupPlace);
-formProfile.addEventListener('submit', applyСhangesProfile);
+formProfile.addEventListener('submit', applyChangesProfile);
 formPlace.addEventListener('submit', addPlaceCard);
 popupButtonClose.forEach(evt => evt.addEventListener('click', closePopup));
 
@@ -164,4 +168,4 @@ popupButtonClose.forEach(evt => evt.addEventListener('click', closePopup));
 initialPlaces.forEach(evt => {
 	const card = createPlaceCard(evt)
 	places.append(card)
-})
+});
